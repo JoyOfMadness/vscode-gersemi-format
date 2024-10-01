@@ -3,11 +3,17 @@
   "displayName": "VS Code Gersemi Format",
   "description": "VS Code support for Gersemi CMake formatter.",
   "version": "0.0.1",
+  "repository": "https://github.com/JoyOfMadness/vscode-gersemi-format",
+  "publisher": "JoyOfMadness",
+  "keywords": [
+    "CMake",
+    "gersemi"
+  ],
   "engines": {
     "vscode": "^1.93.0"
   },
   "categories": [
-    "Other"
+    "Formatters"
   ],
   "activationEvents": [
     "onLanguage:cmake"
