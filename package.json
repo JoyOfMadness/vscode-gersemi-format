@@ -1,0 +1,72 @@
+{
+  "name": "vscode-gersemi-format",
+  "displayName": "VS Code Gersemi Format",
+  "description": "VS Code support for Gersemi CMake formatter.",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.93.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onLanguage:cmake"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "languages": [
+      {
+        "id": "cmake",
+        "aliases": [
+          "cmake",
+          "cmake-listfile"
+        ],
+        "extensions": [
+          "cmake"
+        ]
+      }
+    ],
+    "configuration": {
+      "title": "Gersemi",
+      "properties": {
+        "gersemi.programPath": {
+          "type": "string",
+          "default": "gersemi",
+          "markdownDescription": "Path to `gersemi` executable. Does not need to be changed if `gersemi` is available in the environment path."
+        },
+        "gersemi.currentWorkingDirectory": {
+          "type": "string",
+          "default": null,
+          "markdownDescription": "Overrides working directory for `gersemi`. When not specified, location of the active document will be used.\nNote that `gersemi` automatically searches parent folders for `.gersemirc` config file."
+        },
+        "gersemi.programArgs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": [],
+          "markdownDescription": "Additional program arguments (e.g. `--line-length 120`).\nNote that `-` is automatically passed as the last argument, making `gersemi` read the input from stdin."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.93.0",
+    "@types/mocha": "^10.0.7",
+    "@types/node": "20.x",
+    "@typescript-eslint/eslint-plugin": "^8.3.0",
+    "@typescript-eslint/parser": "^8.3.0",
+    "eslint": "^9.9.1",
+    "typescript": "^5.5.4",
+    "@vscode/test-cli": "^0.0.10",
+    "@vscode/test-electron": "^2.4.1"
+  }
+}
